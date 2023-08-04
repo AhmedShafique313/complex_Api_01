@@ -45,11 +45,17 @@ class _HomeScreenComplexAPIState extends State<HomeScreenComplexAPI> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const ListTile(
-                                    title: Text('data'),
-                                    subtitle: Text('data'),
+                                  ListTile(
+                                    title: Text(snapshot
+                                        .data!.data![index].shop!.name
+                                        .toString()),
+                                    subtitle: Text(snapshot
+                                        .data!.data![index].shop!.shopemail
+                                        .toString()),
                                     leading: CircleAvatar(
-                                      backgroundImage: NetworkImage('url'),
+                                      backgroundImage: NetworkImage(snapshot
+                                          .data!.data![index].shop!.image
+                                          .toString()),
                                     ),
                                   ),
                                   Container(
@@ -89,7 +95,12 @@ class _HomeScreenComplexAPIState extends State<HomeScreenComplexAPI> {
                                             ),
                                           );
                                         }),
-                                  )
+                                  ),
+                                  Icon(
+                                      snapshot.data!.data![index].inWishlist! ==
+                                              true
+                                          ? Icons.favorite
+                                          : Icons.favorite_outline),
                                 ],
                               ),
                             );
